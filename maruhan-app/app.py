@@ -11,10 +11,17 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-# ====== ここだけあなたの環境に合わせて変更 ======
-# 例: CSV or XLSX の絶対パス（どちらでもOK）
-DATA_PATH = "data/maruhan_iruma_juggler_from_xlsx_utf8.csv"
-# ================================================
+from pathlib import Path
+
+# app.py があるフォルダ
+BASE_DIR = Path(__file__).parent
+
+# CSV が 1つ上の階層の data/ にあるなら、.. を挟む
+DATA_PATH = (BASE_DIR / ".." / "data" / "maruhan_iruma_juggler_from_xlsx_utf8.csv").resolve()
+
+# Excelなら
+# DATA_PATH = (BASE_DIR / ".." / "data" / "xxx.xlsx").resolve()
+
 
 JST = timezone(timedelta(hours=9))
 
